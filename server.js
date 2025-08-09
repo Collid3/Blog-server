@@ -7,7 +7,11 @@ const adminRoute = require("./routes/adminRoute");
 const blogRoute = require("./routes/blogRoute");
 const connectDB = require("./config/ConnectDB");
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL || "*",
+  })
+);
 app.use(express.json());
 
 app.use("/api/admin", adminRoute);
